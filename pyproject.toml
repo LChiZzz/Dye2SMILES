@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dye2smiles"
+version = "0.1.0"
+description = "Local dye and molecule structure to RDKit SMILES converter"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "rdkit>=2023.9",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "pyinstaller>=6",
+]
+
+[project.scripts]
+lcsmiles = "lcsmiles.cli:main"
+lcsmiles-gui = "lcsmiles.gui:main"
+dye2smiles = "lcsmiles.cli:main"
+dye2smiles-gui = "lcsmiles.gui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

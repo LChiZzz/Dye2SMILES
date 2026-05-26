@@ -1,0 +1,39 @@
+name: Build Windows Dye2SMILES
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: cmd /C CALL {0}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Miniforge
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          activate-environment: lcsmiles-win
+          environment-file: environment-windows.yml
+          auto-activate-base: false
+
+      - name: Test
+        run: python -m pytest -q
+
+      - name: Build
+        run: python -m PyInstaller --noconfirm LCSMILES_windows.spec
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Dye2SMILES-windows
+          path: dist/Dye2SMILES

@@ -1,0 +1,39 @@
+.DS_Store
+*.swp
+*.pyc
+*.pyo
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Build outputs
+build/
+dist/
+release/
+dist_windows_portable/
+dist_windows_portable_openblas/
+dist_windows_portable_small/
+*.dmg
+*.zip
+*.7z
+*.app
+*.exe
+
+# Downloaded source archives and local tools
+downloads/
+vendor/
+.tools/
+
+# Bundled binary runtimes are published as release assets, not git history.
+packaging/osra-runtime/**
+!packaging/osra-runtime/
+!packaging/osra-runtime/README.md
+packaging/osra-runtime-win/bin/**
+packaging/osra-runtime-win/lib/**
+packaging/osra-runtime-win/share/**
+!packaging/osra-runtime-win/
+!packaging/osra-runtime-win/README.md
+
+# Local packaging metadata
+src/*.egg-info/
