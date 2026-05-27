@@ -107,13 +107,6 @@ $env:OSRA_PATH="C:\path\to\osra.exe"
 
 Dye2SMILES 对结构文件和 SMILES 输入默认保留 RDKit 可解析的立体化学，例如 `@` / `@@` 手性中心和 `/` / `\` 双键顺反。截图输入不同：如果 OSRA 没有从图片里读出楔线或 E/Z 信息，RDKit 不能凭空恢复。因此图片输入即使能得到合法 SMILES，也会显示“需检查”。
 
-## GitHub 发布建议
-
-源码仓库只提交代码、测试、说明和打包脚本。大型软件包不要直接提交到 Git，应该上传到 GitHub Releases：
-
-- macOS DMG: `release/Dye2SMILES-macOS.dmg`
-- Windows ZIP: `dist_windows_portable_small/Dye2SMILES-Windows-Portable.zip`
-- Windows 7z: `dist_windows_portable_small/Dye2SMILES-Windows-Portable.7z`
 
 质量验证脚本：
 
