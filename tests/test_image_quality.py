@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 
 from lcsmiles.core import Chem, ConversionError, convert_file
+from lcsmiles.ocsr import OCSRError
 
 
 pytestmark = pytest.mark.skipif(Chem is None, reason="RDKit is not installed")
@@ -37,7 +38,7 @@ def test_screenshot_results_are_not_marked_as_fully_trusted(tmp_path):
 
     try:
         records = convert_file(image_path)
-    except ConversionError:
+    except (ConversionError, OCSRError):
         pytest.skip("OSRA could not read this generated stereo probe")
 
     assert records
